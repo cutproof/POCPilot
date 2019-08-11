@@ -37,7 +37,7 @@ public class POCRoutes
 	                    System.out.println("Exchange: Converting Message: *********** Exchange: Ended ***********");
 	                }
 				);
-                from("file:data/inbox?noop=true").to("file:data/outbox");
+                //from("file:data/inbox?noop=true").to("file:data/outbox");
 			/*	from("file:src/data?noop=true").to("{{input.queue}}");
 
 		        // content-based router
