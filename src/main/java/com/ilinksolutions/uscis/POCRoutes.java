@@ -35,9 +35,10 @@ public class POCRoutes
 	                    System.out.println("The Converted Message is: " + convertedMessage);
 	                    exchange.getOut().setBody(convertedMessage);
 	                    System.out.println("Exchange: Converting Message: *********** Exchange: Ended ***********");
+	                    returnValue = "POCRoutes: Success!";
 	                }
 				);
-				returnValue = "POCRoutes: Success!";
+				
                 //from("file:data/inbox?noop=true").to("file:data/outbox");
 			/*	from("file:src/data?noop=true").to("{{input.queue}}");
 
