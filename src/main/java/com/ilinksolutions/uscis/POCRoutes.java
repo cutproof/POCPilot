@@ -27,7 +27,7 @@ public class POCRoutes
 			public void configure()
 			{
 				from("file:data/inbox?fileName=person.xml&noop=true").
-				to("{{input.queue}}").log(LoggingLevel.DEBUG, log, "*********** New message received ***********").
+				to("jms:ilinkq1").log(LoggingLevel.DEBUG, log, "*********** New message received ***********").
 					process(exchange ->
 	        		{
 	        			System.out.println("Exchange: Converting Message: *********** Exchange: Started ***********");
@@ -36,9 +36,8 @@ public class POCRoutes
 	                    exchange.getOut().setBody(convertedMessage);
 	                    System.out.println("Exchange: Converting Message: *********** Exchange: Ended ***********");
 	                }
-				);				
-				//from("file:data/inbox?fileName=person.xml&noop=true").to("jms:ilinkq1");
-				//	from("file:c://data//inbox?fileName=person.xml&noop=true").to("file:c://data/outbox//");
+				);
+                from("file:data/inbox?noop=true").to("file:data/outbox");
 			/*	from("file:src/data?noop=true").to("{{input.queue}}");
 
 		        // content-based router
