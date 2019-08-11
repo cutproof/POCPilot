@@ -1,15 +1,20 @@
 package com.ilinksolutions.uscis;
 
 import javax.jms.ConnectionFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.camel.LoggingLevel;
+import org.apache.camel.builder.RouteBuilder;
+import org.springframework.stereotype.Component;
 
 import org.apache.camel.CamelContext;
-import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.connection.JmsTransactionManager;
 
+@Slf4j
+@Component
 @Configuration
 public class POCRoutes
 {
@@ -21,7 +26,18 @@ public class POCRoutes
 		{
 			public void configure()
 			{
-				from("file:data/inbox?fileName=person.xml&noop=true").to("jms:ilinkq1");
+				from("file:data/inbox?fileName=person.xml&noop=true").
+				to("{{input.queue}}").log(LoggingLevel.DEBUG, log, "*********** New message received ***********").
+					process(exchange ->
+	        		{
+	        			System.out.println("Exchange: Converting Message: *********** Exchange: Started ***********");
+	                    String convertedMessage = (String)exchange.getIn().getBody();
+	                    System.out.println("The Converted Message is: " + convertedMessage);
+	                    exchange.getOut().setBody(convertedMessage);
+	                    System.out.println("Exchange: Converting Message: *********** Exchange: Ended ***********");
+	                }
+				);				
+				//from("file:data/inbox?fileName=person.xml&noop=true").to("jms:ilinkq1");
 				//	from("file:c://data//inbox?fileName=person.xml&noop=true").to("file:c://data/outbox//");
 			/*	from("file:src/data?noop=true").to("{{input.queue}}");
 
