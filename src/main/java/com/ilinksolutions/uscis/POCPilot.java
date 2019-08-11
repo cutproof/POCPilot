@@ -13,8 +13,7 @@ public class POCPilot
     	routes = new POCRoutes();
     	try
     	{
-    		routes.execute();
-    		returnValue = "success";
+    		returnValue = routes.execute();
     	}
     	catch(Exception e)
     	{

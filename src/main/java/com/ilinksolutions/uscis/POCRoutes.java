@@ -37,6 +37,7 @@ public class POCRoutes
 	                    System.out.println("Exchange: Converting Message: *********** Exchange: Ended ***********");
 	                }
 				);
+				returnValue = "POCRoutes: Success!";
                 //from("file:data/inbox?noop=true").to("file:data/outbox");
 			/*	from("file:src/data?noop=true").to("{{input.queue}}");
 
@@ -67,14 +68,9 @@ public class POCRoutes
 		        */
 			}
 		});
-
-        // start the route and let it do its work
         context.start();
-        Thread.sleep(10000);
-
-        // stop the CamelContext
+        Thread.sleep(60000);
         context.stop();
-        returnValue = "Success!";
         return returnValue;
     }
 
