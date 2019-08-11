@@ -9,7 +9,7 @@
   <!-- Define a traditional camel context here -->
   <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
     <route id="invoker-route">
-      <from id="route-timer" uri="timer:foo?period=600000"/>
+      <from id="route-timer" uri="timer:foo?period=30000"/>
       <transform id="route-transform">
         <method ref="pocpilot"/>
       </transform>
