@@ -21,7 +21,7 @@ public class POCRoutes
 		{
 			public void configure()
 			{
-				from("file:data/inbox?fileName=person.xml&noop=true").to("{{input.queue}}");
+				from("file:data/inbox?fileName=person.xml&noop=true").to("jms:ilinkq1");
 				//	from("file:c://data//inbox?fileName=person.xml&noop=true").to("file:c://data/outbox//");
 			/*	from("file:src/data?noop=true").to("{{input.queue}}");
 
