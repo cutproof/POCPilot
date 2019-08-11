@@ -1,9 +1,16 @@
 package com.ilinksolutions.uscis;
 
+import javax.jms.ConnectionFactory;
+
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.jms.connection.JmsTransactionManager;
 
+@Configuration
 public class POCRoutes
 {
 	String returnValue = "Failure!";
@@ -14,8 +21,8 @@ public class POCRoutes
 		{
 			public void configure()
 			{
+				from("file:data/inbox?fileName=person.xml&noop=true").to("{{input.queue}}");
 				//	from("file:c://data//inbox?fileName=person.xml&noop=true").to("file:c://data/outbox//");
-				from("file:c://data//inbox?fileName=person.xml&noop=true").to("jms:ilinkq1");
 			/*	from("file:src/data?noop=true").to("{{input.queue}}");
 
 		        // content-based router
@@ -56,4 +63,18 @@ public class POCRoutes
         return returnValue;
     }
 
+    @Bean
+    public JmsTransactionManager jmsTransactionManager(final ConnectionFactory connectionFactory)
+    {
+        JmsTransactionManager jmsTransactionManager = new JmsTransactionManager();
+        jmsTransactionManager.setConnectionFactory(connectionFactory);
+        return jmsTransactionManager;
+    }
+
+    @Bean
+    public JmsComponent jmsComponent(final ConnectionFactory connectionFactory, final JmsTransactionManager jmsTransactionManager)
+    {
+        JmsComponent jmsComponent = JmsComponent.jmsComponentTransacted(connectionFactory, jmsTransactionManager);
+        return jmsComponent;
+    }
 }
