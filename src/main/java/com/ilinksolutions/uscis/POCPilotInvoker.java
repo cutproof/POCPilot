@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
+import com.ilinksolutions.uscis.data.DBTest;
 import com.ilinksolutions.uscis.file.POCFileRouter;
 import com.ilinksolutions.uscis.jms.POCJMSRouter;
 
@@ -16,16 +17,21 @@ public class POCPilotInvoker
         SpringApplication.run(POCPilotInvoker.class, args);
         POCJMSRouter jmsRouter = null;
         POCFileRouter fileRouter = null;
+        DBTest dbTest = null;
         try
         {
         	System.out.println("POCPilotInvoker: Streamed.");
         	fileRouter = new POCFileRouter();
-        	System.out.println("POCPilotInvoker: The JMS Route returned: " + fileRouter.execute());
+        	System.out.println("POCPilotInvoker: The File Route returned: " + fileRouter.execute());
         	System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        	System.out.println("POCPilotInvoker: The JMS Route returned: " + fileRouter.execute());
+        	
         	jmsRouter = new POCJMSRouter();
-        	System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 			System.out.println("POCPilotInvoker: The JMS Route returned: " + jmsRouter.execute());
+        	System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        	
+        	dbTest = new DBTest();
+        	System.out.println("POCPilotInvoker: The DB Test Route returned: " + dbTest.testDBConnection());
+        	System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 		}
         catch (Exception e)
         {
