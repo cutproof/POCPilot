@@ -28,12 +28,12 @@ public class POCJMSRouter
             public void configure()
             {
             	System.out.println("POCJMSRouter: execute(): configure(): ");
-                from("file:data/outbox?noop=true")
+                from("file:data/outbox?fileName=person.xml")
                 .process(new Processor()
                 {                    
                     public void process(Exchange exchange) throws Exception
                     {
-                        System.out.println("We just downloaded: " + exchange.getIn().getHeader("CamelFileName"));
+                        System.out.println("We just downloaded: " + exchange.getIn().getMessageId());
                     }
                 })
                 .to("jms:ilinkq1");
@@ -41,7 +41,7 @@ public class POCJMSRouter
             }
         });
         context.start();
-        Thread.sleep(10000);
+        Thread.sleep(60000);
         context.stop();
         System.out.println("POCJMSRouter: execute: End with returnValue: " + returnValue + ".");
         return returnValue;
