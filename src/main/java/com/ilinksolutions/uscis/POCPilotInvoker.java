@@ -29,9 +29,11 @@ public class POCPilotInvoker
 			System.out.println("POCPilotInvoker: The JMS Route returned: " + jmsRouter.execute());
         	System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
         	
+        	/*
         	dbTest = new DBTest();
         	System.out.println("POCPilotInvoker: The DB Test Route returned: " + dbTest.testDBConnection());
         	System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        	*/
 		}
         catch (Exception e)
         {
