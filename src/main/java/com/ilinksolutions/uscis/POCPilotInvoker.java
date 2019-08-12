@@ -20,7 +20,7 @@ public class POCPilotInvoker
 		}
         catch (Exception e)
         {
-        	System.out.println("POCPilotInvoker: Exception: " + e.getMessage());
+        	System.out.println("POCPilotInvoker: Exception Condition: " + e.getMessage());
         	e.printStackTrace();
 		}
     }
