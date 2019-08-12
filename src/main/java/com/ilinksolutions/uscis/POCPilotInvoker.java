@@ -16,11 +16,11 @@ public class POCPilotInvoker
         POCJMSRouter jmsRouter = new POCJMSRouter();
         try
         {
-			System.out.println("The JMS Route returned: " + jmsRouter.execute());
+			System.out.println("POCPilotInvoker: The JMS Route returned: " + jmsRouter.execute());
 		}
         catch (Exception e)
         {
-        	System.out.println("The JMS Route returned: " + e.getMessage());
+        	System.out.println("POCPilotInvoker: Exception: " + e.getMessage());
         	e.printStackTrace();
 		}
     }

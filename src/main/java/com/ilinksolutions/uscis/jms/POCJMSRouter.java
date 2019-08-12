@@ -19,6 +19,7 @@ public class POCJMSRouter
 	
     public int execute() throws Exception
     {
+    	System.out.println("POCJMSRouter: execute: Begin.");
         CamelContext context = new DefaultCamelContext();
         ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://ilink-amq-amq-1-4x5xk:61616");
         connectionFactory.setUserName("ilink");
@@ -29,6 +30,7 @@ public class POCJMSRouter
             @Override
             public void configure()
             {
+            	System.out.println("");
                 from("file:data/outbox?fileName=person.xml&noop=true")
                 .process(new Processor()
                 {                    
@@ -44,6 +46,7 @@ public class POCJMSRouter
         context.start();
         Thread.sleep(10000);
         context.stop();
+        System.out.println("POCJMSRouter: execute: End.");
         return returnValue;
     }
 }
