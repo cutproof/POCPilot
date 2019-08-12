@@ -7,9 +7,9 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
-		<route>
-			<from uri="file:data/inbox?noop=true" />
-    		<to uri="file:data/outbox" />
+		<route id="poller">
+			<from uri="timer://simpleTimer?period=30000" />
+			<to uri="stream:out" />
 		</route>
 	</camelContext>
 </beans>

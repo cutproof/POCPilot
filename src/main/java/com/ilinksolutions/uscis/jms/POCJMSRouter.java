@@ -9,9 +9,6 @@ import org.apache.camel.component.jms.JmsComponent;
 import org.apache.camel.impl.DefaultCamelContext;
 
 /**
- * A route that polls an FTP server for new orders, downloads them, converts the order 
- * file into a JMS Message and then sends it to the JMS incomingOrders queue hosted 
- * on an embedded ActiveMQ broker instance.
  */
 public class POCJMSRouter
 {
@@ -46,7 +43,7 @@ public class POCJMSRouter
         context.start();
         Thread.sleep(10000);
         context.stop();
-        System.out.println("POCJMSRouter: execute: End.");
+        System.out.println("POCJMSRouter: execute: End with returnValue: " + returnValue + ".");
         return returnValue;
     }
 }
