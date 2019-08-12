@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.ilinksolutions.uscis.domain.Person;
 import com.ilinksolutions.uscis.domain.PersonRowMapper;
 
-@Repository
+// @Repository
 public class PGPersistence
 {
 	NamedParameterJdbcTemplate template;
