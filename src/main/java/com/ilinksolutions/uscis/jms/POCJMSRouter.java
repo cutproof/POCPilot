@@ -27,7 +27,7 @@ public class POCJMSRouter
             @Override
             public void configure()
             {
-            	System.out.println("POCJMSRouter: execute(): configure():");
+            	System.out.println("POCJMSRouter: execute(): configure(): ");
                 from("file:data/outbox?noop=true")
                 .process(new Processor()
                 {                    
