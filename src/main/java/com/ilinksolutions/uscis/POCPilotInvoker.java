@@ -21,9 +21,11 @@ public class POCPilotInvoker
         try
         {
         	System.out.println("POCPilotInvoker: Streamed.");
+        	/*
         	fileRouter = new POCFileRouter();
         	System.out.println("POCPilotInvoker: The File Route returned: " + fileRouter.execute());
         	System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        	*/
         	
         	jmsRouter = new POCJMSRouter();
 			System.out.println("POCPilotInvoker: The JMS Route returned: " + jmsRouter.execute());
