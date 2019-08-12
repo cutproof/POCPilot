@@ -1,7 +1,5 @@
 package com.ilinksolutions.uscis.file;
 
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
@@ -21,7 +19,7 @@ public class POCFileRouter
             @Override
             public void configure()
             {
-                from("file:data/inbox?noop=true")
+                from("file:data/inbox?fileName=person.xml&noop=true")
                 .to("file:data/outbox");
                 returnValue = 1;
             }
@@ -29,7 +27,7 @@ public class POCFileRouter
         context.start();
         Thread.sleep(10000);
         context.stop();
-        System.out.println("POCJMSRouter: execute: End with returnValue: " + returnValue + ".");
+        System.out.println("POCFileRouter: execute: End with returnValue: " + returnValue + ".");
         return returnValue;
     }
 }

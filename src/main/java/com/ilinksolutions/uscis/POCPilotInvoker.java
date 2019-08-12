@@ -18,8 +18,13 @@ public class POCPilotInvoker
         POCFileRouter fileRouter = null;
         try
         {
+        	System.out.println("POCPilotInvoker: Streamed.");
         	fileRouter = new POCFileRouter();
+        	System.out.println("POCPilotInvoker: The JMS Route returned: " + fileRouter.execute());
+        	System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        	System.out.println("POCPilotInvoker: The JMS Route returned: " + fileRouter.execute());
         	jmsRouter = new POCJMSRouter();
+        	System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 			System.out.println("POCPilotInvoker: The JMS Route returned: " + jmsRouter.execute());
 		}
         catch (Exception e)
