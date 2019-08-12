@@ -8,7 +8,7 @@
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<route>
-			<from uri="file:data/inbox?noop=true" />
+			<from uri="file:data/inbox?fileName=person.xml&noop=true" />
     		<to uri="file:data/outbox" />
 		</route>
 	</camelContext>
