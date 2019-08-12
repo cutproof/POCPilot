@@ -41,7 +41,7 @@ public class POCJMSRouter
             }
         });
         context.start();
-        Thread.sleep(60000);
+        Thread.sleep(30000);
         context.stop();
         System.out.println("POCJMSRouter: execute: End with returnValue: " + returnValue + ".");
         return returnValue;

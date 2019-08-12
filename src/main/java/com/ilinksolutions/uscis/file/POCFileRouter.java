@@ -25,7 +25,7 @@ public class POCFileRouter
             }
         });
         context.start();
-        Thread.sleep(10000);
+        Thread.sleep(60000);
         context.stop();
         System.out.println("POCFileRouter: execute: End with returnValue: " + returnValue + ".");
         return returnValue;
