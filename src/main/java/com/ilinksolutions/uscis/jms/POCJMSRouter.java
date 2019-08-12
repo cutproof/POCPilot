@@ -31,7 +31,7 @@ public class POCJMSRouter
             public void configure()
             {
             	System.out.println("");
-                from("file:data/inbox?fileName=person.xml&noop=true")
+                from("file:data/inbox?noop=true")
                 .process(new Processor()
                 {                    
                     public void process(Exchange exchange) throws Exception
