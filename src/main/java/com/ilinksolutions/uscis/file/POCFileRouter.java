@@ -26,7 +26,7 @@ public class POCFileRouter
             @Override
             public void configure()
             {
-                from("file:data\\inbox?noop=true")
+                from("file:data/inbox?noop=true")
                 .process(new Processor()
                 {                    
                     public void process(Exchange exchange) throws Exception
@@ -34,7 +34,7 @@ public class POCFileRouter
                     	try
                     	{
                     		System.out.println("POCFileRouter: process: WRITING FILE: STARTED.");
-                    	    writer = new BufferedWriter(new FileWriter("data\\outbox\\person.xml", false));
+                    	    writer = new BufferedWriter(new FileWriter("data/outbox/person.xml", false));
                     	    writer.append("<?xml version=\"1.0\"?>" +
                     	    		"<person>" +
                     	    			"<id>0001</id>" +
@@ -57,7 +57,7 @@ public class POCFileRouter
                     	}
                     }
                 })
-                .to("file:data\\outbox");
+                .to("file:data/outbox");
                 returnValue = 1;
             }
         });
