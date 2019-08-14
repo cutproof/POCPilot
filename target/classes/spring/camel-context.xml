@@ -8,8 +8,8 @@
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<route>
-			<from uri="file:data/inbox?noop=true" />
-    		<to uri="file:data/outbox" />
+			<from uri="timer://simpleTimer?period=30000"/>
+    		<to uri="stream:out" />
 		</route>
 	</camelContext>
 </beans>

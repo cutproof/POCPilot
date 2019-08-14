@@ -1,9 +1,1 @@
-<?xml version="1.0"?>
-<person>
-	<id>0001</id>
-	<FirstName>Tanmay</FirstName>
-	<LastName>Patil</LastName>
-	<ContactNo>1234567890</ContactNo>
-	<Email>tanmaypatil@xyz.com</Email>
-	<image></image>
-</person>
+<?xml version="1.0"?><person><id>0001</id><FirstName>Tanmay</FirstName><LastName>Patil</LastName><ContactNo>1234567890</ContactNo><Email>tanmaypatil@xyz.com</Email><image></image></person>

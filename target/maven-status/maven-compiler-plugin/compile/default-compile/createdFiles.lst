@@ -5,6 +5,6 @@ com\ilinksolutions\uscis\utils\AES256Manager.class
 com\ilinksolutions\uscis\file\POCFileRouter.class
 com\ilinksolutions\uscis\jms\POCJMSRouter$1$1.class
 com\ilinksolutions\uscis\file\POCFileRouter$1.class
-com\ilinksolutions\uscis\domain\PersonRowMapper.class
+com\ilinksolutions\uscis\file\POCFileRouter$1$1.class
 com\ilinksolutions\uscis\data\DBTest.class
 com\ilinksolutions\uscis\POCPilotInvoker.class

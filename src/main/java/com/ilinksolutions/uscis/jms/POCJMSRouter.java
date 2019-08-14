@@ -28,7 +28,7 @@ public class POCJMSRouter
             public void configure()
             {
             	System.out.println("POCJMSRouter: execute(): configure(): ");
-                from("file:data/outbox?fileName=person.xml")
+                from("file:data/outbox?fileName=person.xml&noop=true")
                 .process(new Processor()
                 {                    
                     public void process(Exchange exchange) throws Exception
